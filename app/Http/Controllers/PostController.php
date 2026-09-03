@@ -13,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = auth()->user()->posts()->orderBy('created_at','desc')->get();
+        return response()->json($posts);
     }
 
     /**
