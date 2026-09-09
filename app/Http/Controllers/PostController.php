@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
@@ -13,8 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = auth()->user()->posts()->orderBy('created_at','desc')->get();
-        return response()->json($posts);
+        $posts = auth()->user()->posts()->orderBy('created_at','desc')->paginate(5);
+        return PostResource::collection($posts);
     }
 
     /**
