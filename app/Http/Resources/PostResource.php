@@ -21,7 +21,6 @@ class PostResource extends JsonResource
             "body" => $this->body,
             "published" => $this->is_published,
             "createdAt" => $this->created_at->diffForHumans(),
-
         ];
     }
 }
